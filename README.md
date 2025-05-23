@@ -68,11 +68,13 @@ Dans votre classe `UI`, après avoir demandé à l'utilisateur s'il souhaite jou
 
 Dans votre classe `UI`, ajoutez une propriété contenant une liste (std::vector) de questions, ainsi qu'un entier `_score`, initialisé à zéro par défaut, pour garder en mémoire la progression dans la liste de questions.
 
-Dans le constructeur de la classe `UI`, ajoutez vos questions.
+Dans le constructeur de la classe `UI`, ajoutez [vos questions](#quizz-liste-des-questions).
 
 Ajoutez, dans la classe `UI`, deux méthodes :
 - une méthode `askQuestion`, prenant en paramètre une Question, et renvoyant un booléen (true si la question a bien été répondu, false sinon). Cette méthode va afficher la question, suivie des réponses possibles, puis va demander à l'utilisateur son choix. Le choix saisi correspondra à la clef de la réponse. On prendra soin de redemander à l'utilisateur si son choix n'existe pas dans les choix possibles.
 - une méthode `play`, renvoyant un booléen, qui va boucler sur chaque question, et appeller `askQuestion`. A chaque question, si `askQuestion` renvoie true, on passera à la question suivante en incrémentant `_score`. Sinon, le jeu s'arrête, et le score final est affiché.
+
+Dans votre code principal, lorsque l'utilisateur souhaite jouer, utilisez la méthode `play`.
 
 
 ### Création de la structure Réponse
