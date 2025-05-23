@@ -2,20 +2,23 @@
 
 ## Consigne générale
 
-Nous allons créer un système de quizz.
+Nous allons créer un système de quizz __jouable dans la console__.
 
 Pour le cadre de l'exercice, nous allons nous restreindre à un simple quizz codé "en dur", mais nous allons réaliser les structures de base.
 Il est probable que vous n'arriviez pas à 100% des éléments demandés - ce qui sera étudié et noté sera votre progression, la cohérence de votre code, ainsi que la mise en oeuvre des différents compétences de programmation OO/C++. Des questions peuvent vous être posées pour vérifier cette mise en oeuvre.
+Il est notemment attendu une bonne pratique de l'encapsulation, le respect des normes de base de programmation en C++ (nommage des propriétés, méthodes...) que nous avons vu en cours et en TD/TP.
 
 > [!Important]
-> Vous **devez** créer un dépôt `3aa-mvp` et inviter votre enseignant sur le dépôt.
+> Vous **devez** créer un dépôt `3aa-mvp` sur Github et inviter votre enseignant sur le dépôt.
 
 Il est impératif de réaliser au moins un commit par partie/question.
 Chaque partie peut et doit être testée avant de passer à la partie suivante.
 
 
+## Parties de développement
 
-## Interaction utilisateur - partie 1
+
+### Interaction utilisateur - partie 1
 
 Au début de votre programme principal, demandez à l'utilisateur s'il souhaite :
 - `[J]ouer`
@@ -27,7 +30,7 @@ Si l'utilisateur choisit `Q`, fermez l'application correctement.
 Si l'utilisateur choisit `J`, affichez un simple message pour le moment.
 
 
-## Interaction utilisateur - partie 2
+### Interaction utilisateur - partie 2
 
 Déplacez le code réalisé pour demander à l'utilisateur son choix dans une méthode `mainLoop` d'une classe `UI` que vous créerez.
 
@@ -39,16 +42,29 @@ Dans la boucle où on demande à l'utilisateur s'il souhaite jouer ou quitter, a
 Si l'utilisateur choisit cette option, permettez-lui de saisir une langue au format international (ex : `fr_FR` pour le français en France, `en_US` pour l'anglais américain, etc.). On ne contrôlera pas la cohérence de la saisie.
 
 
-## Création de la structure Question
+### Création de la structure Question
 
-Créez une classe Question, contenant une chaîne `_content` (le contenu de la question), une liste (std::map) associative de clefs (caractère) et valeurs (chaînes), ainsi qu'un caractère indiquant quelle réponse est valide.
+Créez une classe Question, contenant une chaîne `_content` (le contenu de la question), une [liste (std::map) associative](#fonctionnement-de-stdmap) de clefs (caractère) et valeurs (chaînes), ainsi qu'un caractère indiquant quelle réponse est valide.
 
 Ajoutez également une surcharge d'opérateur << pour permettre l'affichage de la question.
 
-Dans votre classe `UI`, ajoutez, dans le constructeur, la construction d'une question et son affichage, afin de contrôler que la question fonctionne correctement.
+Dans votre classe `UI`, ajoutez, dans le constructeur, la construction d'[une question "test"](#question-test) et son affichage, afin de contrôler que la question fonctionne correctement.
+
+> [!Info]
+> Pensez à retirer votre test après votre commit et avant de passer à la partie suivante.
 
 
-## Liste de questions
+### Vérification de la réponse
+
+Ajoutez, dans la classe Question, une méthode `verify` prenant en paramètre un caractère et renvoyant un booléen. Cette méthode renverra `true` si le caractère correspond bien à la bonne réponse, et `false` sinon.
+
+Dans votre classe `UI`, après avoir demandé à l'utilisateur s'il souhaite jouer, affichez [une question "test"](#question-test), puis permettez de saisir une chaîne et vérifiez si cette chaîne correspond à la bonne réponse ou non.
+
+> [!Info]
+> Pensez à retirer votre test après votre commit et avant de passer à la partie suivante.
+
+
+### Liste de questions
 
 Dans votre classe `UI`, ajoutez une propriété contenant une liste (std::vector) de questions, ainsi qu'un entier `_score`, initialisé à zéro par défaut, pour garder en mémoire la progression dans la liste de questions.
 
@@ -59,13 +75,13 @@ Ajoutez, dans la classe `UI`, deux méthodes :
 - une méthode `play`, renvoyant un booléen, qui va boucler sur chaque question, et appeller `askQuestion`. A chaque question, si `askQuestion` renvoie true, on passera à la question suivante en incrémentant `_score`. Sinon, le jeu s'arrête, et le score final est affiché.
 
 
-## Création de la structure Réponse
+### Création de la structure Réponse
 
 Nous allons structurer nos réponses, en transformant chaque réponse en objet. Créez une classe Response, contenant une chaîne de caractères `_content`.
 Modifiez vos différents codes pour inclure l'usage de Response là où cela est pertinent.
 
 
-## Création de la structure Quizz
+### Création de la structure Quizz
 
 Nous allons structurer notre Quizz, afin de créer une classe Quizz, comprenant un nom `_content`, et une liste de questions.
 Ensuite, modifiez votre classe `UI` pour conserver le Quizz plutôt qu'une liste de questions.
@@ -74,12 +90,12 @@ Ensuite, modifiez votre classe `UI` pour conserver le Quizz plutôt qu'une liste
 > Vous aurez besoin de créer des accesseurs et d'autres méthodes utilitaires dans votre structure Quizz.
 
 
-## Création de la structure Translatable
+### Création de la structure Translatable
 
 Créez une classe Translatable, de laquelle vont hériter Quizz, Response et Question.
 Cette classe parent va définir une liste (std::map) associant langue et contenu, en plus du contenu "par défaut". Si le contenu pour la langue choisie n'existe pas, on utilisera ce contenu par défaut.
 
-Ajoutez dans cette classe une méthode statique `switchLang` qui prendra en paramètre la langue de l'utilisateur (qui peut être saisie par l'utilisateur dans la [partie utilisateurs 2](#Interaction utilisateur - partie 2).
+Ajoutez dans cette classe une méthode statique `switchLang` qui prendra en paramètre la langue de l'utilisateur (qui peut être saisie par l'utilisateur dans la [partie utilisateurs 2](#interaction-utilisateur-partie-2).
 
 Quelques conseils :
 - ne définissez `_content` qu'une seule fois dans la classe `Translatable`
@@ -88,21 +104,81 @@ Quelques conseils :
 - rappellez-vous des visibilités/portées d'héritage !
 
 
-## Création de la structure Storage
+### Création de la structure Storage
 
-Créez une classe Storage contenant une propriété `fh`, qui sera un pointeur vers un `fstream`.
+Créez une classe Storage contenant une propriété `fh`, qui sera un pointeur vers un [`fstream`](#lecture-écriture-de-fichiers-fstream).
 Le fichier concerné se nomme `score.txt`.
-
-> [!Note]
-> 
+L'objectif est de stocker dans ce fichier le score utilisateur obtenu lors d'une partie (on ne sauvegardera le score qu'à la fin de la partie, et on affiche le score au lancement du jeu).
+Le score sera cumulatif au fil des parties.
 
 
 ## Annexes
 
+
+### Question test
+
+```md
+Contenu : "Test"
+Bonne réponse : C
+Réponses :
+A. Faux
+B. Aussi Faux
+C. Vrai
+D. Toujours Faux
+```
+
+
+### Quizz (liste des questions)
+
+```md
+Contenu : Quel est le plus grand océan du monde ?
+Bonne réponse : A
+Réponses :
+A. Océan Pacifique
+B. Océan Atlantique
+C. Océan Indien
+D. Océan Arctique
+
+Contenu : Qui a peint la fresque de la Cène ?
+Bonne réponse : B
+Réponses :
+A. Michel-Ange
+B. Léonard de Vinci
+C. Raphaël
+D. Botticelli
+
+Contenu : Quelle est la capitale de l’Australie ?
+Bonne réponse : C
+Réponses :
+A. Sydney
+B. Melbourne
+C. Canberra
+D. Brisbane
+
+Contenu : En quelle année a eu lieu la chute du mur de Berlin ?
+Bonne réponse : D
+Réponses :
+A. 1985
+B. 1991
+C. 1980
+D. 1989
+
+Contenu : Quel est le symbole chimique de l’or ?
+Bonne réponse : B
+Réponses :
+A. Ag
+B. Au
+C. Fe
+D. Pb
+```
+
+
 ### Documentation / Aide C++
 
 Vectors : https://en.cppreference.com/w/cpp/container/vector
+
 Maps : https://en.cppreference.com/w/cpp/container/map
+
 Et bien d'autres !
 
 ### Rappel : lecture de flux
