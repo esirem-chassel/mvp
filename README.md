@@ -10,9 +10,13 @@ Il est notemment attendu une bonne pratique de l'encapsulation, le respect des n
 
 > [!Caution]
 > Vous **devez** créer un dépôt `3aa-mvp` sur Github et inviter votre enseignant sur le dépôt.
+> 
 > Il est impératif de réaliser au moins un commit par partie/question.
+> 
 > Chaque partie peut et doit être testée avant de passer à la partie suivante.
+> 
 > Les recherches sur documentation, Internet et consorts sont autorisées.
+> 
 > L'usage d'intelligence artificielle et la communication active avec des tiers est interdite.
 
 
