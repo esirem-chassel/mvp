@@ -55,7 +55,7 @@ Ajoutez également une surcharge d'opérateur << pour permettre l'affichage de l
 
 Dans votre classe `UI`, ajoutez, dans le constructeur, la construction d'[une question "test"](#question-test) et son affichage, afin de contrôler que la question fonctionne correctement.
 
-> [!Info]
+> [!Note]
 > Pensez à retirer votre test après votre commit et avant de passer à la partie suivante.
 
 
@@ -65,7 +65,7 @@ Ajoutez, dans la classe Question, une méthode `verify` prenant en paramètre un
 
 Dans votre classe `UI`, après avoir demandé à l'utilisateur s'il souhaite jouer, affichez [une question "test"](#question-test), puis permettez de saisir une chaîne et vérifiez si cette chaîne correspond à la bonne réponse ou non.
 
-> [!Info]
+> [!Note]
 > Pensez à retirer votre test après votre commit et avant de passer à la partie suivante.
 
 
@@ -93,7 +93,7 @@ Modifiez vos différents codes pour inclure l'usage de Response là où cela est
 Nous allons structurer notre Quizz, afin de créer une classe Quizz, comprenant un nom `_content`, et une liste de questions.
 Ensuite, modifiez votre classe `UI` pour conserver le Quizz plutôt qu'une liste de questions.
 
-> [!Note]
+> [!Tip]
 > Vous aurez besoin de créer des accesseurs et d'autres méthodes utilitaires dans votre structure Quizz.
 
 
