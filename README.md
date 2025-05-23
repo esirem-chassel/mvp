@@ -8,11 +8,12 @@ Pour le cadre de l'exercice, nous allons nous restreindre à un simple quizz cod
 Il est probable que vous n'arriviez pas à 100% des éléments demandés - ce qui sera étudié et noté sera votre progression, la cohérence de votre code, ainsi que la mise en oeuvre des différents compétences de programmation OO/C++. Des questions peuvent vous être posées pour vérifier cette mise en oeuvre.
 Il est notemment attendu une bonne pratique de l'encapsulation, le respect des normes de base de programmation en C++ (nommage des propriétés, méthodes...) que nous avons vu en cours et en TD/TP.
 
-> [!Important]
+> [!Caution]
 > Vous **devez** créer un dépôt `3aa-mvp` sur Github et inviter votre enseignant sur le dépôt.
-
-Il est impératif de réaliser au moins un commit par partie/question.
-Chaque partie peut et doit être testée avant de passer à la partie suivante.
+> Il est impératif de réaliser au moins un commit par partie/question.
+> Chaque partie peut et doit être testée avant de passer à la partie suivante.
+> Les recherches sur documentation, Internet et consorts sont autorisées.
+> L'usage d'intelligence artificielle et la communication active avec des tiers est interdite.
 
 
 ## Parties de développement
