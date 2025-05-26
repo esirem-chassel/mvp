@@ -230,3 +230,12 @@ La méthode `seekp` permet de positionner le curseur de lecture / écriture.
 La méthode `getline` de `std`, prenant en premier paramètre le `fstream` et en second paramètre la chaîne dans laquelle écrire, permet de lire une ligne de fichier et placer le résultat dans la chaîne.
 
 Enfin, pour écrire dans le fichier, vous pouvez utiliser l'opérateur de flux `<<` pour "injecter" une chaîne dans le fichier.
+
+
+### Représentation UML
+
+![Représentation UML](/uml_mvp.png)
+
+> [!Important]
+> Ne sont pas représentés les types de retour de certaines méthodes : à vous d'y réflechir.
+> De même, la majorité des accesseurs et constructeurs sont absents, c'est à vous de les ajouter au besoin.
